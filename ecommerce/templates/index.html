@@ -2,36 +2,12 @@
 {% block title %}Home - Shop Cart{% endblock title %}
 
 {% block content %}
+
   <div class="col-lg-8">
     <h2>Welcome to Shop Cart</h2>
     <p>We are team of talented designers making websites with Bootstrap</p>
     <a href="#about" class="btn-get-started">Shop Now</a>
   </div>
-
-  <div class="card bg-light p-5 col-6">
-    <h3 class="text-center text-dark">Sign Up</h3>
-    <form action="accounts/signup/" method="post">
-    {% csrf_token %}
-    <br>
-    <label for="email">Email:</label>
-    <div class="form-group">
-      <input type="email" class="form-control" pt-2 id="email" required name="email">
-    </div>
-    <label for="pass1">Password:</label>
-    <div class="form-group">
-      <input type="password" class="form-control" pt-2 id="pass1" required name="pass1" >
-    </div>
-    <label for="pass2">Confirm Password:</label>
-    <div class="form-group">
-      <input type="password" class="form-control" pt-2 id="pass2" required name="pass2" >
-    </div>
-    <br>
-    <button type="submit" class="btn btn-primary">Sign Up</button>
-    <br>
-    Already have an account? <a href="/accounts/login/">Login</a>
-    <br>
-  </div>
-
 
 {% endblock content %}
 

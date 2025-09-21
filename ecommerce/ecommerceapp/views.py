@@ -1,10 +1,22 @@
 from django.shortcuts import render
 from django.contrib import messages 
-from ecommerceapp.models import Contact
+from ecommerceapp.models import Contact, Products
+from math import ceil
 
 # Create your views here.
 def index(request):
-    return render(request, 'index.html')
+    allProds = []
+    catprods = Products.objects.values('category','id')
+    cats = {item['category'] for item in catprods}
+    for cat in cats:
+        prod = Products.objects.filter(category=cat)
+        n = len(prod)
+        nSlides = n // 4 + ceil((n/4) - (n//4))
+        allProds.append([prod, range(1, nSlides), nSlides])
+
+    params = {'allProds':allProds}
+    
+    return render(request,"index.html", params)
 
 def contact(request):
     if request.method == 'POST':
@@ -19,6 +31,9 @@ def contact(request):
         return render(request,"contact.html")
         
     return render(request, 'contact.html')
+
+
+
 
 def about(request):
     return render(request, 'about.html')

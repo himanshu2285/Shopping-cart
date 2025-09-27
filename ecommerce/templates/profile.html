@@ -21,23 +21,30 @@
                 </tr>
             </thead>
             <tbody>
-                {% for i in items %}
-                    <tr>
-                        <td scope="row">{{i.oid}}</td>
-                        <td>{{i.name}}</td>
-                        <td>{{i.items_json}}</td>
-                        <td>{{i.amount}}</td>
-                        <td>{{i.paymentstatus}}</td>
-                        <td>{{i.address1}}</td>
-                        <td>{{i.phone}}</td>
+            {% for i in items %}
+                 <tr>
+                    <td scope="row">{{i.oid}}</td>
+                    <td>{{i.name}}</td>
+                    <td>{{i.items_json}}</td>
+                    <td>{{i.amount}}</td>
+                    <td>{{i.paymentstatus}}</td>
+                    <td>{{i.address1}}</td>
+                    <td>{{i.phone}}</td>
                         
-                        {% for j in status %}
-                            <td>{{i.update_desc}}</td>
-                            <td>{{i.delivered}}</td>
-                            <td>{{i.timestamp}}</td>
-                        {% endfor %}
-                    </tr>
-                {% endfor %}
+                    {% for j in status %}
+                        <td>{{j.update_desc}}</td>
+
+                        {% if j.delivered %}
+                          <td><i class="fa-solid fa-circle-check"></i> Delivered</td>
+                        {% else %}
+                        <td><i class="fa-solid fa-truck"></i>Not Delivered</td>
+                        {% endif %}
+
+
+                        <td>{{j.timestamp}}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
             </tbody>
         </table>
 

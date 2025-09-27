@@ -43,6 +43,9 @@
 
     <!-- Main CSS File -->
     <link href="{% static '/assets/css/main.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" 
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
 
   <body class="index-page">
@@ -56,10 +59,11 @@
         <nav id="navmenu" class="navmenu">
           <ul>
             <li><a href="/" class="nav-link scrollto active">Home</a></li>
-            <li><a href="/blog" class="nav-link scrollto">Blog</a></li>
             <li><a href="/about" class="nav-link scrollto">About</a></li>
             <li><a href="/checkout" class="nav-link scrollto">Checkout</a></li>
-            <li><a href="/profile" class="nav-link scrollto">My Profile</a></li>
+            <li><a href="/profile" class="nav-link scrollto">My Profile <i class="fa-solid fa-square-user"></i>
+
+            </a></li>
             
             <!-- <li><a href="/contact" class="nav-link scrollto bg-danger p-2 m-2">Cart</a></li> -->
              <button type="button" class="nav-link scrollto bg-danger p-3 m-2 text-white" id="popcart" 
@@ -68,15 +72,17 @@
             </button>
 
             {% if request.user.is_authenticated %}
-            <li><a href="/accounts/logout/">Logout</a></li>
+            <li><a href="/accounts/logout/">Logout <i class="fa-solid fa-right-from-bracket"></i>
+
+            </a></li>
             {% else %}
             <li class="dropdown">
               <a href="/accounts/login/"
-                ><span>SignIn</span>
+                ><span>SignIn <i class="fa-solid fa-user"></i></span>
                 <i class="bi bi-chevron-down toggle-dropdown"></i
               ></a>
               <ul>
-                <li><a href="/accounts/signup/">Sign Up</a></li>
+                <li><a href="/accounts/signup/">Sign Up <i class="fa-solid fa-user"></i></a></li>
                 <li><a href="/accounts/login/">Login</a></li>
                 
               </ul>
@@ -85,7 +91,9 @@
 
             
             
-            <li><a href="/contact" class="bg-dark p-2 m-2">Contact</a></li>
+            <li><a href="/contact" class="bg-dark p-2 m-2">Contact
+              <i class="fa-solid fa-message"></i>
+            </a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>

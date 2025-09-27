@@ -73,7 +73,7 @@ def checkout(request):
         
         #Payment Integration
         id = Order.order_id
-        oid = str(id)+"ShopCart"
+        oid = str(id)+"ShopyCart"
         param_dict = {
             'MID':keys.MID,
             'ORDER_ID':oid,

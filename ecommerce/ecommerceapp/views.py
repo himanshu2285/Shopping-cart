@@ -125,3 +125,35 @@ def handlerequest(request):
             print('order was not successful because' + response_dict['RESPMSG'])
     return render(request, 'paymentstatus.html', {'response': response_dict})
 
+
+
+def profile(request):
+    if not request.user.is_authenticated:
+        messages.warning(request,"Login & Try Again")
+        return redirect("/accounts/login")
+    
+    currentuser = request.user.username
+    items = Orders.objects.filter(email = currentuser)
+    rid = ""
+    for i in items:
+        print(i.oid)
+        myid = i.oid
+        rid = myid.replace("ShopyCart","")
+        print(rid)
+    if rid and rid.isdigit():
+        status = OrderUpdate.objects.filter(order_id = int(rid))
+        print(status)
+    else:
+        print(f"Invalid order ID: {rid}")
+        status = []  # or handle this case as needed
+    context = {"items":items,"status":status}
+    for j in status:
+        print(j.update_desc)
+        print(j.delivered)
+        print(j.timestamp)
+        context.update({"msg":j.update_desc})
+        context.update({"dstatus":j.delivered})
+        context.update({"timestamp":j.timestamp})
+    print(context)
+        
+    return render(request,"profile.html",context)

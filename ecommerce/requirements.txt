@@ -1,0 +1,10 @@
+asgiref==3.9.1
+Django==5.2.6
+djangorestframework==3.16.1
+django-six==1.0.5
+Pillow==11.3.0
+pycryptodome==3.23.0
+pytz==2025.2
+six==1.17.0
+sqlparse==0.5.3
+tzdata==2025.2

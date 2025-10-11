@@ -27,9 +27,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY","django-insecure-z0(l-c6$54ap+zy-nhjm%r_l5zqjpu-oy^%+6n7$6p=@6(+6^^")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+DEBUG = os.environ.get("DEBUG", "False").lower() == "True"
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(" ") if os.environ.get("ALLOWED_HOSTS") else []
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
+# ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(" ") if os.environ.get("ALLOWED_HOSTS") else []
 # ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
 
 
@@ -89,9 +90,10 @@ DATABASES = {
 }
 
 # Postgres Database
-# postgresql://shopcart_postgres_database_user:9vLsjuLYo8SUrMncRlOB5aBhvAyazx5a@dpg-d3cku3q4d50c73clbji0-a.oregon-postgres.render.com/shopcart_postgres_database
+# postgresql://shopcart_postgres_database_hoty_user:0lrRnu5JUb4dYGoVzTjrCvkupD5Ui9iz@dpg-d3l8ra2li9vc73emtv10-a.oregon-postgres.render.com/shopcart_postgres_database_hoty
 database_url = os.environ.get("DATABASE_URL")
-DATABASES["default"] = dj_database_url.parse(database_url)
+DATABASES['default'] = dj_database_url.parse(database_url)
+# DATABASES["default"] = dj_database_url.parse("postgresql://shopcart_postgres_database_hoty_user:0lrRnu5JUb4dYGoVzTjrCvkupD5Ui9iz@dpg-d3l8ra2li9vc73emtv10-a.oregon-postgres.render.com/shopcart_postgres_database_hoty")
 
 
 
